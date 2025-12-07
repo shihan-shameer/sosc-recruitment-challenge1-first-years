@@ -1,20 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=poppins:wght@600;800&display=swap');
+
 body {
-    background: #fff;
-    font-family: sans-serif;
-    text-align: center;
     margin: 0;
-    padding-top: 120px;
+    height: 100vh;
+    font-family: 'poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    allgn-items: center;
+    background: radial-gradient(circle at top, #020024, #090979, #00d4ff);
+    overflow: hidden;
 }
-
+/* name styling */
 #name {
-    font-size: 48px;
-    font-weight: bold;
+    font-size: 4rem;
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    position: relative;
+    animation: fadeIn 1.5s ease-out;
 }
-
+/* glitch effect*/
+#name::before,
+#name::after {
+    content: attr(datd-name);
+    left: 0;
+    width: 100%;
+}
+#name::before {
+    color: magenta;
+    top: -2px;
+    left: -2px;
+    animation: glitch 0.4s infinite;
+}
+#name::after {
+    color: magenta;
+    top: 2px;
+    left: 2px;
+    animation: glitch 0.6s infinite;
+}
+@keyframes glitch {
+    0% { clip-path: inset(0 0 0 0); }
+    20% { clip-path: inset(5% 0 30% 0); }
+    40% { clip-path: inset(15% 0 5% 0); }
+    60% { clip-path: inset(30% 0 10% 0); }
+    80% { clip-path: inset(10% 0 20% 0); }
+}
+/* button style */
 #info-btn {
-    margin-top: 20px;
-    padding: 10px 24px;
-    font-size: 16px;
-    border-radius: 6px;
+    margin-top: 30px;
+    background: transparent;
+    border: 2px solid white;
+    color: white;
+    padding: 10px 25px;
+    font-size: 1rem;
     cursor: pointer;
+    transition: all 0.3s;
+}
+#info-btn:hover {
+    background: white;
+    color: black;
+    transform: scale(1.1);
+}
+/* fade in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: scale(1);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+/* floating particles */
+span {
+    position: absolute;
+    background: white;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%
+    opacity: 0.7;
+    animation: float linear infinite;
+}
+@keyframes float {
+    from {
+        transform: translateY(100vh);
+    }
+    to {
+        transform: translateY(-10vh);
+    }
 }
